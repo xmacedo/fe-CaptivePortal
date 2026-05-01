@@ -1,0 +1,10 @@
+services:
+  frontend:
+    image: nginx:stable-alpine
+    container_name: captive-frontend
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - captive-net
+    restart: unless-stopped
